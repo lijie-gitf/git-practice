@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Login.css" />
+</head>
+
+<body>
+    <div id="login">
+        <h1>Login</h1>
+        <form method="post">
+            <input type="text" id="textname" required="required" placeholder="用户名" />
+            <input type="password" id="textpwd" required="required" placeholder="密码" />
+            <button class="but" id="submit" type="button">登录</button>
+        </form>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $("#submit").on("click", function () {
+            var account = $("#textname").val();
+            var pwd = $("#textpwd").val();
+            $.post("Account/Login", { userName: account, passWord: pwd }, function (res) {
+                if (res.code == "0") {
+                    location.href = res.url;
+                }
+            })
+        })
+    })
+</script>
