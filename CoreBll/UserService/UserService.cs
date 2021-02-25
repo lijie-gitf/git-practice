@@ -19,9 +19,8 @@ namespace CoreBll.UserService
 
         public Tb_User GetUserByAccount(string Account)
         {
-            //  return _repository.Get<Tb_User>(p => p.Account.Equals(Account)).FirstOrDefault();
-            string sql = "select * from Tb_User where Account=@Account";
-          return  _repository.SqlQuery<Tb_User>(sql, new Microsoft.Data.SqlClient.SqlParameter[] { new Microsoft.Data.SqlClient.SqlParameter("Account", Account) }).FirstOrDefault();
+            return _repository.Get<Tb_User>(p => p.Account.Equals(Account)).FirstOrDefault();
+           
         }
 
         public Tb_User GetUserById(int Id)
