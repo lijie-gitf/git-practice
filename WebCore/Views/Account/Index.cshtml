@@ -29,7 +29,8 @@
         $("#submit").on("click", function () {
             var account = $("#textname").val();
             var pwd = $("#textpwd").val();
-            $.post("Account/Login", { userName: account, passWord: pwd }, function (res) {
+            $.post("Account/Login", { userAccount: account, passWord: pwd }, function (res) {
+            
                 if (res.code == "0") {
                     location.href = res.url;
                 }

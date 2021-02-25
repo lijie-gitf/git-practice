@@ -4,6 +4,257 @@
     "G:\\练习\\PracticeSolution\\WebCore\\WebCore.csproj": {}
   },
   "projects": {
+    "G:\\练习\\PracticeSolution\\CoreBll\\CoreBll.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\练习\\PracticeSolution\\CoreBll\\CoreBll.csproj",
+        "projectName": "CoreBll",
+        "projectPath": "G:\\练习\\PracticeSolution\\CoreBll\\CoreBll.csproj",
+        "packagesPath": "I:\\Program Files (x86)\\Nuget\\Package",
+        "outputPath": "G:\\练习\\PracticeSolution\\CoreBll\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lijie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "http://128.0.202.106:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj"
+              },
+              "G:\\练习\\PracticeSolution\\CoreModel\\CoreModel.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreModel\\CoreModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\练习\\PracticeSolution\\CoreCommon\\CoreCommon.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\练习\\PracticeSolution\\CoreCommon\\CoreCommon.csproj",
+        "projectName": "CoreCommon",
+        "projectPath": "G:\\练习\\PracticeSolution\\CoreCommon\\CoreCommon.csproj",
+        "packagesPath": "I:\\Program Files (x86)\\Nuget\\Package",
+        "outputPath": "G:\\练习\\PracticeSolution\\CoreCommon\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lijie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "http://128.0.202.106:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj",
+        "projectName": "CoreEntirty",
+        "projectPath": "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj",
+        "packagesPath": "I:\\Program Files (x86)\\Nuget\\Package",
+        "outputPath": "G:\\练习\\PracticeSolution\\CoreEntirty\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lijie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "http://128.0.202.106:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\练习\\PracticeSolution\\CoreModel\\CoreModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\练习\\PracticeSolution\\CoreModel\\CoreModel.csproj",
+        "projectName": "CoreModel",
+        "projectPath": "G:\\练习\\PracticeSolution\\CoreModel\\CoreModel.csproj",
+        "packagesPath": "I:\\Program Files (x86)\\Nuget\\Package",
+        "outputPath": "G:\\练习\\PracticeSolution\\CoreModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lijie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "http://128.0.202.106:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "G:\\练习\\PracticeSolution\\WebCore\\WebCore.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +278,17 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "G:\\练习\\PracticeSolution\\CoreBll\\CoreBll.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreBll\\CoreBll.csproj"
+              },
+              "G:\\练习\\PracticeSolution\\CoreCommon\\CoreCommon.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreCommon\\CoreCommon.csproj"
+              },
+              "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj": {
+                "projectPath": "G:\\练习\\PracticeSolution\\CoreEntirty\\CoreEntirty.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -39,6 +300,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.12, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

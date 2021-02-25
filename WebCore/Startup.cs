@@ -1,8 +1,12 @@
+using CoreBll.UserService;
+using CoreCommon;
+using CoreEntirty;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace WebCore
 {
@@ -25,6 +30,26 @@ namespace WebCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var a = BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
+            //连接数据库
+            //services.AddDbContext<CoreDbContext>(option => {
+            //    option.UseSqlServer(BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
+            //});
+
+            //注入EF仓储
+            services.AddScoped<ICoreRepository>(option => {
+            if (BaseConfigure.Configuration["DataBaseType"] == "SqlServer")
+            {
+                    return new CoreSqlRepository(new CoreDbContext(p=> {
+                        p.UseSqlServer(BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
+                        
+                    }));
+                }
+                else {
+                    //其它的数据库
+                    return new CoreSqlRepository(option.GetRequiredService<CoreDbContext>());
+                }
+            });
             //注册身份验证
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
             {
@@ -32,7 +57,30 @@ namespace WebCore
                 option.LogoutPath = new PathString("/Account/LoginOut");//登出时跳转的页面
                 option.Cookie.Name = "userCookie"; //用户登录标识的cookie名称
             });
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                //格式化日期时间格式
+                //options.JsonSerializerOptions.Converters.Add(new DatetimeJsonConverter());
+                //数据格式首字母小写
+                //options.JsonSerializerOptions.PropertyNamingPolicy =JsonNamingPolicy.CamelCase;
+                //数据格式原样输出
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                //取消Unicode编码
+                //options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
+                //忽略空值
+               // options.JsonSerializerOptions.IgnoreNullValues = true;
+                //允许额外符号
+                options.JsonSerializerOptions.AllowTrailingCommas = true;
+                //反序列化过程中属性名称是否使用不区分大小写的比较
+                //options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+            });
+
+            #region 业务层注入
+            services.AddTransient<IUserService, UserService>();
+            #endregion
+
             services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
