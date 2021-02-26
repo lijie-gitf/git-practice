@@ -23,11 +23,14 @@ namespace WebCore.Controllers.Account
         }
         public IActionResult Index()
         {
+          
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Login(string userAccount,string passWord)
         {
+          
+
             var result = new { code = "0", message = "", url = "/Home/Index" };
             if (string.IsNullOrWhiteSpace(userAccount))
             {

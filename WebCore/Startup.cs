@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using WebCore.Middleware;
 
 namespace WebCore
 {
@@ -30,7 +30,7 @@ namespace WebCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var a = BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
+            
             //连接数据库
             //services.AddDbContext<CoreDbContext>(option => {
             //    option.UseSqlServer(BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
@@ -106,6 +106,9 @@ namespace WebCore
 
             app.UseAuthorization();
 
+            //异常处理中间件
+            app.UseExecptionMiddleware();
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
