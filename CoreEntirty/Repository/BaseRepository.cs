@@ -158,6 +158,7 @@ namespace CoreEntirty
         #endregion
 
         #region 基本方法
+        #region 同步
         /// <summary>
         /// 执行sql语句
         /// </summary>
@@ -167,11 +168,6 @@ namespace CoreEntirty
         {
             return DbContext.Database.ExecuteSqlRaw(sql);
         }
-        public virtual async Task<int> ExecuteBySqlAsyns(string sql)
-        {
-            return await DbContext.Database.ExecuteSqlRawAsync(sql);
-        }
-
         /// <summary>
         /// 执行sql语句
         /// </summary>
@@ -183,10 +179,6 @@ namespace CoreEntirty
             return DbContext.Database.ExecuteSqlRaw(sql, parameter);
         }
 
-        public virtual async Task<int> ExecuteBySqlAsyns(string sql, params object[] parameter)
-        {
-            return await DbContext.Database.ExecuteSqlRawAsync(sql, parameter);
-        }
         /// <summary>
         /// 根据ID获取一个实体对象
         /// </summary>
@@ -198,29 +190,108 @@ namespace CoreEntirty
         {
             return DbContext.Set<Tntity>().Where(p => p.Id.Equals(Id)).FirstOrDefault();
         }
-
-        public virtual async Task<Tntity> GetByIdAsync<Tntity>(int Id) where Tntity : BaseEntity
-        {
-            return await DbContext.Set<Tntity>().Where(p => p.Id.Equals(Id)).FirstOrDefaultAsync();
-        }
+        /// <summary>
+        /// 根据表达式获取对象
+        /// </summary>
+        /// <typeparam name="Tntity"></typeparam>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public virtual IEnumerable<Tntity> Get<Tntity>(Expression<Func<Tntity, bool>> predicate) where Tntity : BaseEntity
         {
             return DbContext.Set<Tntity>().Where(predicate).ToList();
         }
-        public virtual async Task<IEnumerable<Tntity>> GetAsync<Tntity>(Expression<Func<Tntity, bool>> predicate) where Tntity : BaseEntity
-        {
-            return await DbContext.Set<Tntity>().Where(predicate).ToListAsync();
-        }
+        /// <summary>
+        /// 更新一个实体对象
+        /// </summary>
+        /// <typeparam name="Tntity"></typeparam>
+        /// <param name="tntity"></param>
         public virtual void Update<Tntity>(Tntity tntity) where Tntity : BaseEntity
         {
             DbContext.Set<Tntity>().Update(tntity);
             DbContext.SaveChanges();
         }
+
+        #endregion
+
+        #region 异步
+        /// <summary>
+        /// 执行sql语句，返回受影响的行数
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <returns>受影响的行数</returns>
+        public virtual async Task<int> ExecuteBySqlAsyns(string sql)
+        {
+            return await DbContext.Database.ExecuteSqlRawAsync(sql);
+        }
+
+
+        /// <summary>
+        /// 执行sql语句，返回受影响的行数
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="parameter">参数</param>
+        /// <returns>受影响的行数</returns>
+        public virtual async Task<int> ExecuteBySqlAsyns(string sql, params object[] parameter)
+        {
+            return await DbContext.Database.ExecuteSqlRawAsync(sql, parameter);
+        }
+
+        /// <summary>
+        /// 根据ID获取实体
+        /// </summary>
+        /// <typeparam name="Tntity">实体对象类型</typeparam>
+        /// <param name="Id">主键Id</param>
+        /// <returns>Tntity对象</returns>
+        public virtual async Task<Tntity> GetByIdAsync<Tntity>(int Id) where Tntity : BaseEntity
+        {
+            return await DbContext.Set<Tntity>().Where(p => p.Id.Equals(Id)).FirstOrDefaultAsync();
+        }
+        /// <summary>
+        /// 根据表达式获取实体
+        /// </summary>
+        /// <typeparam name="Tntity">实体对象类型</typeparam>
+        /// <param name="predicate">表达式</param>
+        /// <returns>Tntity对象</returns>
+        public virtual async Task<IEnumerable<Tntity>> GetAsync<Tntity>(Expression<Func<Tntity, bool>> predicate) where Tntity : BaseEntity
+        {
+            return await DbContext.Set<Tntity>().Where(predicate).ToListAsync();
+        }
+        /// <summary>
+        /// 更新一个实体对象
+        /// </summary>
+        /// <typeparam name="Tntity">对象类型</typeparam>
+        /// <param name="tntity">实体参数</param>
+        /// <returns></returns>
         public virtual async Task UpdateAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity
         {
             DbContext.Set<Tntity>().Update(tntity);
-           await DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
         }
+
+        public virtual void Add<Tntity>(Tntity tntity) where Tntity : BaseEntity
+        {
+            DbContext.Set<Tntity>().Add(tntity);
+            DbContext.SaveChanges();
+        }
+
+        public virtual async Task AddAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity
+        {
+            await DbContext.Set<Tntity>().AddAsync(tntity);
+            await DbContext.SaveChangesAsync();
+        }
+
+        public virtual void Delete<Tntity>(Tntity tntity) where Tntity : BaseEntity
+        {
+            DbContext.Set<Tntity>().Remove(tntity);
+            DbContext.SaveChanges();
+        }
+        public virtual async Task DeleteAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity
+        {
+            DbContext.Set<Tntity>().Remove(tntity);
+            await DbContext.SaveChangesAsync();
+        }
+        #endregion
+
 
         #endregion
 

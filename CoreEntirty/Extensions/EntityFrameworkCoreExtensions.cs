@@ -14,7 +14,7 @@ namespace CoreEntirty.Extensions
 {
    public static class EntityFrameworkCoreExtensions
     {
-        private static DbCommand CreateCommand(DatabaseFacade facade, string sql, out DbConnection connection, SqlParameter[] parameters, DbTransaction dbTransaction = null)
+        private static DbCommand CreateCommand(DatabaseFacade facade, string sql, out DbConnection connection, SqlParameter[] parameters=null, DbTransaction dbTransaction = null)
         {
             var conn = facade.GetDbConnection();
             connection = conn;
@@ -60,6 +60,30 @@ namespace CoreEntirty.Extensions
         {
             var dt = SqlQuery(facade, sql, parameters);
             return dt.ToList<T>();
+        }
+        public static DataTable SqlQuery(this DatabaseFacade facade, string sql)
+        {
+            var command = CreateCommand(facade, sql, out DbConnection conn);
+
+            var reader = command.ExecuteReader();
+
+            var dt = new DataTable();
+            dt.Load(reader);
+            reader.Close();
+            conn.Close();
+            return dt;
+        }
+        public static async Task<DataTable> SqlQueryAsync(this DatabaseFacade facade, string sql)
+        {
+            var command = CreateCommand(facade, sql, out DbConnection conn);
+
+            var reader = await command.ExecuteReaderAsync();
+
+            var dt = new DataTable();
+            dt.Load(reader);
+            reader.Close();
+            conn.Close();
+            return dt;
         }
         public static async Task<List<T>> SqlQueryAsync<T>(this DatabaseFacade facade, string sql, SqlParameter[] parameters) where T : BaseEntity, new()
         {

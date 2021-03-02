@@ -43,6 +43,90 @@ namespace CoreEntirty
         Task<IEnumerable<Tntity>> GetAsync<Tntity>(Expression<Func<Tntity, bool>> predicate) where Tntity : BaseEntity;
 
         /// <summary>
+        /// 更新一个实体
+        /// </summary>
+        /// <typeparam name="Tntity"></typeparam>
+        /// <param name="tntity"></param>
+        void Update<Tntity>(Tntity tntity) where Tntity : BaseEntity;
+
+        /// <summary>
+        /// 更新一个实体,异步
+        /// </summary>
+        /// <typeparam name="Tntity"></typeparam>
+        /// <param name="tntity"></param>
+        Task UpdateAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity;
+
+        /// <summary>
+        /// 执行sql，返回表
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        DataTable SqlQuery(string sql);
+
+        /// <summary>
+        /// 执行sql，返回表
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        Task<DataTable> SqlQueryAsync(string sql);
+
+        /// <summary>
+        /// 执行sql，返回受影响行数
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        int ExecuteBySql(string sql);
+
+        /// <summary>
+        /// 执行sql，返回受影响行数
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        Task<int> ExecuteBySqlAsyns(string sql);
+
+        /// <summary>
+        /// 执行sql返回受影响的行数
+        /// </summary>
+        /// <param name="sql">sql字符串</param>
+        /// <param name="parameter">参数</param>
+        int ExecuteBySql(string sql, params object[] parameter);
+
+        // <summary>
+        /// 执行sql返回受影响的行数
+        /// </summary>
+        /// <param name="sql">sql字符串</param>
+        /// <param name="parameter">参数</param>
+        Task<int> ExecuteBySqlAsyns(string sql, params object[] parameter);
+        /// <summary>
+        /// 执行sql，返回表
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        DataTable SqlQuery(string sql, SqlParameter[] parameters);
+
+        /// <summary>
+        /// 执行sql，返回表，异步
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        Task<DataTable> SqlQueryAsync(string sql, SqlParameter[] parameters);
+
+        /// <summary>
+        /// 执行sql，返回实体
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        IEnumerable<Tntity> SqlQuery<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new();
+
+        /// <summary>
+        /// 执行sql，返回实体，异步
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        Task<IEnumerable<Tntity>> SqlQueryAsync<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new();
+
+
+        /// <summary>
         /// 提交一个事务
         /// </summary>
         void Commit();
@@ -79,49 +163,24 @@ namespace CoreEntirty
         /// <param name="Rollback"></param>
         Task ExecuteTransAsync(Func<ICoreRepository, bool> Func, Action<Exception> Rollback = null);
 
+
         /// <summary>
-        /// 更新一个实体
+        /// 新增一条数据
         /// </summary>
         /// <typeparam name="Tntity"></typeparam>
         /// <param name="tntity"></param>
-        void Update<Tntity>(Tntity tntity) where Tntity : BaseEntity;
+        void Add<Tntity>(Tntity tntity) where Tntity : BaseEntity;
 
         /// <summary>
-        /// 更新一个实体,异步
+        /// 新增一天数据
         /// </summary>
         /// <typeparam name="Tntity"></typeparam>
         /// <param name="tntity"></param>
-        Task UpdateAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity;
-
-
-        /// <summary>
-        /// 执行sql，返回表
-        /// </summary>
-        /// <param name="sql"></param>
         /// <returns></returns>
-        DataTable SqlQuery(string sql, SqlParameter[] parameters);
+        Task AddAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity;
 
-        /// <summary>
-        /// 执行sql，返回表，异步
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        Task<DataTable> SqlQueryAsync(string sql, SqlParameter[] parameters);
+        void Delete<Tntity>(Tntity tntity) where Tntity : BaseEntity;
 
-        /// <summary>
-        /// 执行sql，返回实体
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-         IEnumerable<Tntity>  SqlQuery<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new();
-
-        /// <summary>
-        /// 执行sql，返回实体，异步
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        Task<IEnumerable<Tntity>> SqlQueryAsync<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new();
-
-
+        Task DeleteAsync<Tntity>(Tntity tntity) where Tntity : BaseEntity;
     }
 }

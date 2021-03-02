@@ -51,7 +51,7 @@ namespace CoreEntirty
 
         public DataTable SqlQuery(string sql, SqlParameter[] parameters)
         {
-            return DbContext.Database.SqlQuery(sql,parameters);
+            return DbContext.Database.SqlQuery(sql, parameters);
         }
 
         public async Task<DataTable> SqlQueryAsync(string sql, SqlParameter[] parameters)
@@ -59,9 +59,9 @@ namespace CoreEntirty
             return await DbContext.Database.SqlQueryAsync(sql, parameters);
         }
 
-        public IEnumerable<Tntity> SqlQuery<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity,new()
+        public IEnumerable<Tntity> SqlQuery<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new()
         {
-            return  DbContext.Database.SqlQuery<Tntity>(sql, parameters);
+            return DbContext.Database.SqlQuery<Tntity>(sql, parameters);
         }
 
         public async Task<IEnumerable<Tntity>> SqlQueryAsync<Tntity>(string sql, SqlParameter[] parameters) where Tntity : BaseEntity, new()
@@ -69,6 +69,14 @@ namespace CoreEntirty
             return await DbContext.Database.SqlQueryAsync<Tntity>(sql, parameters);
         }
 
-     
+        public DataTable SqlQuery(string sql)
+        {
+            return DbContext.Database.SqlQuery(sql);
+        }
+
+        public async Task<DataTable> SqlQueryAsync(string sql)
+        {
+            return await DbContext.Database.SqlQueryAsync(sql);
+        }
     }
 }
