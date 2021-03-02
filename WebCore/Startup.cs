@@ -10,11 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebCore.Middleware;
+using CoreCommon.LogModule;
 
 namespace WebCore
 {
@@ -30,12 +32,12 @@ namespace WebCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             //连接数据库
             //services.AddDbContext<CoreDbContext>(option => {
             //    option.UseSqlServer(BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
             //});
-
+            services.AddLogging();
             //注入EF仓储
             services.AddScoped<ICoreRepository>(option => {
             if (BaseConfigure.Configuration["DataBaseType"] == "SqlServer")
@@ -76,7 +78,7 @@ namespace WebCore
             });
 
             #region 业务层注入
-            services.AddTransient<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
             #endregion
 
             services.AddControllersWithViews();
@@ -84,7 +86,7 @@ namespace WebCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -96,6 +98,9 @@ namespace WebCore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            //配置自定义日志
+            loggerFactory.AddFile(BaseConfigure.Configuration.GetSection("FileLogging"));
+
             //添加身份验证中间件
             app.UseAuthentication();
             //app.UseAuthorization();
@@ -104,7 +109,7 @@ namespace WebCore
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             //异常处理中间件
             app.UseExecptionMiddleware();
