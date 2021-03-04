@@ -22,7 +22,8 @@ namespace CoreCommon.PushMessage
 
         public ConnectionChannelPool(RabbitMQOptions options)
         {
-            connectionActivator = CreateConnection(options);
+            maxSize = defaultSize;
+               connectionActivator = CreateConnection(options);
         }
         private Func<IConnection> CreateConnection(RabbitMQOptions options)
         {
@@ -41,7 +42,7 @@ namespace CoreCommon.PushMessage
 
 
         /// <summary>
-        /// 获取一个连接对象，
+        /// 获取一个连接对象，如果容器中有，从容器取并移除
         /// </summary>
         /// <returns></returns>
         public IModel Rent()
@@ -49,7 +50,7 @@ namespace CoreCommon.PushMessage
             IModel model;
             if (pool.TryDequeue(out model))
             {
-                //线程管理容器中存在，取容器中，容器管理的大小+1
+                //线程管理容器中存在，取容器中，容器管理的大小-1
                 Interlocked.Decrement(ref count);
 
                 return model;
@@ -70,7 +71,7 @@ namespace CoreCommon.PushMessage
                 pool.Enqueue(model);
                 return true;
             }
-            //容器管理的大小+1
+            //容器管理的大小-1
             Interlocked.Decrement(ref count);
 
             return false;
