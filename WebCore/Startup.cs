@@ -17,6 +17,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebCore.Middleware;
 using CoreCommon.LogModule;
+using CoreCommon.PushMessage;
 
 namespace WebCore
 {
@@ -79,6 +80,16 @@ namespace WebCore
 
             #region 业务层注入
             services.AddScoped<IUserService, UserService>();
+            #endregion
+
+            #region 消息队列注入
+            
+            services.AddSingleton<IConnectionChannelPool>(p=> {
+                return new ConnectionChannelPool(new RabbitMQOptions());
+            });
+            services.AddSingleton<IPushMessageService>(p=> {
+                return new PushMessageService(p.GetRequiredService<IConnectionChannelPool>(),new PublicOptions(){Exchange="lijie_Exchange",Queue="jietest0304"});
+            });
             #endregion
 
             services.AddControllersWithViews();
