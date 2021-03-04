@@ -64,7 +64,7 @@ namespace CoreCommon.PushMessage
         /// <param name="model"></param>
         /// <returns></returns>
         public bool Return(IModel model)
-        {
+        { 
             if (Interlocked.Increment(ref count) <= maxSize)
             {
                 //如果队列不存在，将消息队列加入线程管理队列
