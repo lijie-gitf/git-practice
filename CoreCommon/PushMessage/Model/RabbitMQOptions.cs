@@ -22,7 +22,7 @@ namespace CoreCommon.PushMessage
         /// <summary>
         /// Default value for connection attempt timeout, in milliseconds.
         /// </summary>
-        public const int DefaultConnectionTimeout = 300;
+        public const int DefaultConnectionTimeout = 3000;
 
         /// <summary>
         /// Default password (value: "guest").
