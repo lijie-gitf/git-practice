@@ -101,6 +101,10 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "dependencies": {
+            "CSRedisCore": {
+              "target": "Package",
+              "version": "[3.6.6, )"
+            },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -116,6 +120,14 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             },
             "RabbitMQ.Client": {
               "target": "Package",

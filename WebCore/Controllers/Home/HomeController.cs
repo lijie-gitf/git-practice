@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace WebCore.Controllers.Home
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController<object>
     {
-        private IPushMessageService _pushMessageService;
-        public HomeController(IPushMessageService pushMessageService)
+      
+        public HomeController()
         {
-            _pushMessageService = pushMessageService;
+          
         }
-        public IActionResult Index()
-        {
-            _pushMessageService.PushMessage<string>(new MessageModel<string> {data="测试推送消息队列" });
-            return View();
-        }
+
+
+
     }
 }

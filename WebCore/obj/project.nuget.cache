@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pxp3lPVqbV2yqlH8JZgALgJ674TqVLvXGKrCL16KBzsOlghJKOrg5nn+K53dKI3SzX1DgRSsCe7X5COiNLzguw==",
+  "dgSpecHash": "/SrC9Fmw6+MA1MxX8y93OyueX3Gc5mzqG6GI9QHD2Ln9IuNsyZtOPlser/YUg08VxsX4sosnXCMHc6KR0QUvNw==",
   "success": true,
   "projectFilePath": "G:\\练习\\PracticeSolution\\WebCore\\WebCore.csproj",
   "expectedPackageFiles": [
+    "I:\\Program Files (x86)\\Nuget\\Package\\csrediscore\\3.6.6\\csrediscore.3.6.6.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.12\\microsoft.aspnetcore.mvc.razor.extensions.3.1.12.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.12\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.12.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.aspnetcore.razor.language\\3.1.12\\microsoft.aspnetcore.razor.language.3.1.12.nupkg.sha512",
@@ -31,6 +32,7 @@
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.http\\5.0.0\\microsoft.extensions.http.5.0.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
@@ -109,6 +111,7 @@
     "I:\\Program Files (x86)\\Nuget\\Package\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\system.threading.tasks.extensions\\4.5.3\\system.threading.tasks.extensions.4.5.3.nupkg.sha512",
+    "I:\\Program Files (x86)\\Nuget\\Package\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",

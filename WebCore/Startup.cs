@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using WebCore.Middleware;
 using CoreCommon.LogModule;
 using CoreCommon.PushMessage;
+using WebCore.Filter.PermissionFilter;
 
 namespace WebCore
 {
@@ -56,7 +57,7 @@ namespace WebCore
             //注册身份验证
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
             {
-                option.LoginPath = new PathString("/Account/Login");//身份验证未通过时的跳转页面
+                option.LoginPath = new PathString("/Account/Index");//身份验证未通过时的跳转页面
                 option.LogoutPath = new PathString("/Account/LoginOut");//登出时跳转的页面
                 option.Cookie.Name = "userCookie"; //用户登录标识的cookie名称
             });
@@ -91,8 +92,19 @@ namespace WebCore
                 return new PushMessageService(p.GetRequiredService<IConnectionChannelPool>(),new PublicOptions(){Exchange="lijie_Exchange",Queue="jietest0304"});
             });
             #endregion
-
-            services.AddControllersWithViews();
+            #region 过滤器
+            services.AddSingleton<PermissionOption>(p => new PermissionOption
+            {
+                LoginAction= "/Account/Index",
+                NoPermissionAction= "/Account/Index",
+                UserPerssions=new List<UserPermission> { 
+                    new UserPermission { RoleCode = "0001", Url = "/Home/Index" }, 
+                    new UserPermission { RoleCode = "0001", Url = "/Navigation/GetMenuByRole" }, 
+                    new UserPermission { RoleCode = "0001", Url = "/Navigation/Index" } }
+            });
+          
+            services.AddControllersWithViews(Options => Options.Filters.Add<PermissionFilterAttribute>());
+            #endregion
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

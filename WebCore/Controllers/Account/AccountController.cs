@@ -31,7 +31,7 @@ namespace WebCore.Controllers.Account
         {
           
 
-            var result = new { code = "0", message = "", url = "/Home/Index" };
+            var result = new { code = "0", message = "", url = "/Navigation/Index" };
             if (string.IsNullOrWhiteSpace(userAccount))
             {
 

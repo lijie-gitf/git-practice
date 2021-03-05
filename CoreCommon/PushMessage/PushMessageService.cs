@@ -52,6 +52,7 @@ namespace CoreCommon.PushMessage
         }
         public void PushMessage<T>(MessageModel<T> messageModel) where T : class
         {
+            
             var channel = _pool.Rent();
 
             HashSet<ulong> seqs = new HashSet<ulong>();
@@ -69,14 +70,14 @@ namespace CoreCommon.PushMessage
 
             IBasicProperties properties = channel.CreateBasicProperties();
             properties.Persistent = true;
-
-            //开启事务
+           
+            //开启消息确认模式
             channel.ConfirmSelect();
 
             //发送消息
             channel.BasicPublish(_options.Exchange, routeKey, properties, Encoding.UTF8.GetBytes(messageModel.data));
 
-         
+            
             _pool.Return(channel);
         }
     }
