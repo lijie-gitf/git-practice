@@ -39,6 +39,7 @@ namespace WebCore
             //services.AddDbContext<CoreDbContext>(option => {
             //    option.UseSqlServer(BaseConfigure.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection"));
             //});
+            
             services.AddLogging();
             //×¢ÈëEF²Ö´¢
             services.AddScoped<ICoreRepository>(option => {

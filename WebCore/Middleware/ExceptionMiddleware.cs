@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace WebCore.Middleware
 {
+    
     /// <summary>
     /// 处理异常中间件
     /// </summary>
-    public class ExceptionMiddleware
+      class ExceptionMiddleware
     {
         private RequestDelegate _next;
         private IWebHostEnvironment _environment;

@@ -9,19 +9,13 @@
 
 <link rel="stylesheet" href="~/Resource/assets/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/Resource/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-@*<link rel="stylesheet" href="~/Resource/assets/css/fonts.googleapis.com.css" />*@
 <link rel="stylesheet" href="~/Resource/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 <link rel="stylesheet" href="~/Resource/assets/css/ace-skins.min.css" />
 <link rel="stylesheet" href="~/Resource/assets/css/ace-rtl.min.css" />
-
 <script type="text/javascript" src="~/Resource/Scripts/jquery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="~/Resource/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-@*<script type="text/javascript" src="~/Resource/assets/js/ace-extra.min.js"></script>*@
 <script type="text/javascript" src="~/Resource/assets/js/ace.min.js"></script>
 <script type="text/javascript" src="~/Resource/bootstrap-3.3.7-dist/js/sidebar-menu.js"></script>
-<script type="text/javascript" src="~/Resource/bootstrap-3.3.7-dist/js/bootstrap-tab.js"></script>
-@*<script type="text/javascript" src="~/Resource/assets/js/jquery.flot.pie.min.js"></script>
-    <script type="text/javascript" src="~/Resource/assets/js/jquery.flot.resize.min.js"></script>*@
 <script type="text/javascript" src="~/Resource/Scripts/Common/SpControl.js"></script>
 <style type="text/css">
     html, body {
@@ -472,13 +466,13 @@
             $("#Quit").on("click", function () {
                 $.ajax({
                     type: "POST", //提交方式
-                    url: "/Home/Quit",//路径
+                    url: "/Account/LoginOut",//路径
                     // data: {},
                     dataType: "json",
                     success: function (result) {//返回数据根据结果进行相应的处理
                         if (result.code == 0) {
 
-                            window.location.href = "/login/index";
+                            window.location.href = "/Account/Index";
 
                         } else {
                             Sp.Control.alerts.alert(result.Data)

@@ -3,13 +3,53 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Threading.Tasks;
 
+
 namespace Test
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Task t = new Task(()=>
+
+            RedisTest();
+        }
+        /// <summary>
+        /// redis测试
+        /// </summary>
+        public static void RedisTest()
+        {
+            //连接哨兵
+            var csredis = new CSRedis.CSRedisClient("redis-master", new[] { "127.0.0.1:27000" });
+            //var csredis = new CSRedis.CSRedisClient("127.0.0.1:6379,defaultDatabase = 1,poolsize = 50,ssl = false,writeBuffer = 10240");
+
+            //初始化redisHelper
+            RedisHelper.Initialization(csredis);
+      
+            int i=0;
+
+            while (true)
+            {
+                i++;
+                try
+                {
+                    Console.WriteLine($"第{i}次写入");
+                    RedisHelper.Set("test_key", $"第{i}次写入");
+                    Console.ReadLine();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                      Console.ReadLine();
+                }
+            }
+
+        }
+        /// <summary>
+        /// rabbitmq测试
+        /// </summary>
+        public static void RabbitTest()
+        {
+            Task t = new Task(() =>
             {
                 var factory = new ConnectionFactory
                 {
@@ -51,10 +91,9 @@ namespace Test
             });
             t.Start();
             while (true)
-            { 
-            
+            {
+
             }
-           
         }
     }
 }

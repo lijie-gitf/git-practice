@@ -54,7 +54,7 @@ namespace WebCore.Filter.PermissionFilter
             if (_permissions.GroupBy(p => p.Url).Where(p => p.Key.ToLower().Equals(queryUrl)).Count() > 0)
             {
                 //获取用户角色
-                string userCode = context.HttpContext.User.Claims.Single(p => p.Type.Equals(ClaimTypes.Role)).Value;
+                string userCode = context.HttpContext.User.Claims.Single(p => p.Type.Equals(ClaimTypes.Role))?.Value;
 
                 //判断角色是否有页面的使用权限
                 if (!_permissions.Any(w => w.RoleCode.ToLower().Equals(userCode.ToLower()) && w.Url.ToLower().Equals(queryUrl)))

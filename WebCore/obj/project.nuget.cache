@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/SrC9Fmw6+MA1MxX8y93OyueX3Gc5mzqG6GI9QHD2Ln9IuNsyZtOPlser/YUg08VxsX4sosnXCMHc6KR0QUvNw==",
+  "dgSpecHash": "AavNuwVtlbckPbbEYDrMqeue4Nek7ZG7PDPVUf//dN5JqaM04YXNA8/GA8+GAaT4s/IPoT0DacO8EB0h7DPGMw==",
   "success": true,
   "projectFilePath": "G:\\练习\\PracticeSolution\\WebCore\\WebCore.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.identitymodel.tokens\\5.6.0\\microsoft.identitymodel.tokens.5.6.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "I:\\Program Files (x86)\\Nuget\\Package\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",

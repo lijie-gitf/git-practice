@@ -4,10 +4,23 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	  <RazorCompileOnBuild>false</RazorCompileOnBuild>
 	  <RazorCompileOnPublish>false</RazorCompileOnPublish>
+	  <UserSecretsId>02decc47-2c68-4d04-870f-a2acb011cc17</UserSecretsId>
+	  <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Dockerfile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
