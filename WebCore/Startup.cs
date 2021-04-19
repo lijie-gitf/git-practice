@@ -57,7 +57,7 @@ namespace WebCore
             });
             //注册身份验证
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
-            {
+            { 
                 option.LoginPath = new PathString("/Account/Index");//身份验证未通过时的跳转页面
                 option.LogoutPath = new PathString("/Account/LoginOut");//登出时跳转的页面
                 option.Cookie.Name = "userCookie"; //用户登录标识的cookie名称

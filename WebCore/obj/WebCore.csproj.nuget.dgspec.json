@@ -21,7 +21,6 @@
           "netstandard2.1"
         ],
         "sources": {
-          "http://128.0.202.106:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +81,6 @@
           "netstandard2.1"
         ],
         "sources": {
-          "http://128.0.202.106:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -170,7 +168,6 @@
           "netstandard2.1"
         ],
         "sources": {
-          "http://128.0.202.106:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -230,7 +227,6 @@
           "netstandard2.1"
         ],
         "sources": {
-          "http://128.0.202.106:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -288,7 +284,6 @@
           "netcoreapp3.1"
         ],
         "sources": {
-          "http://128.0.202.106:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

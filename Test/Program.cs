@@ -10,7 +10,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-
+            //RabbitTest();
             RedisTest();
         }
         /// <summary>
@@ -19,29 +19,47 @@ namespace Test
         public static void RedisTest()
         {
             //连接哨兵
-            var csredis = new CSRedis.CSRedisClient("redis-master", new[] { "127.0.0.1:27000" });
-            //var csredis = new CSRedis.CSRedisClient("127.0.0.1:6379,defaultDatabase = 1,poolsize = 50,ssl = false,writeBuffer = 10240");
-
+            //var csredis = new CSRedis.CSRedisClient("redis-master", new[] { "127.0.0.1:27000" });
+            var csredis = new CSRedis.CSRedisClient("127.0.0.1:6379,defaultDatabase = 1,poolsize = 50,ssl = false,writeBuffer = 10240");
+           
             //初始化redisHelper
             RedisHelper.Initialization(csredis);
-      
-            int i=0;
-
-            while (true)
+            RedisHelper.Del("key1");
+            var a = RedisHelper.ZAdd("key1", (1, "这是1"), (2, "这是2"));
+            var c = RedisHelper.ZAdd("key1", (3, "这是3"), (0, "这是2"));
+            //var b = RedisHelper.ZScore("key1", 2);
+            var d = RedisHelper.ZScan("key1", 2);
+            int ii = -1;
+            var c1 = RedisHelper.ZCard("key1");
+            Console.WriteLine(c1);
+            //Console.WriteLine(a);
+            //Console.WriteLine(a);
+            //Console.WriteLine(c);
+            //Console.WriteLine(b);
+            //Console.WriteLine(d);
+            Console.WriteLine(ii);
+            foreach ((string, decimal) item in d.Items)
             {
-                i++;
-                try
-                {
-                    Console.WriteLine($"第{i}次写入");
-                    RedisHelper.Set("test_key", $"第{i}次写入");
-                    Console.ReadLine();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                      Console.ReadLine();
-                }
+
+                Console.WriteLine(item.Item1);
             }
+            //int i=0;
+
+            //while (true)
+            //{
+            //    i++;
+            //    try
+            //    {
+            //        Console.WriteLine($"第{i}次写入");
+            //        RedisHelper.Set("test_key", $"第{i}次写入");
+            //        Console.ReadLine();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //          Console.ReadLine();
+            //    }
+            //}
 
         }
         /// <summary>
