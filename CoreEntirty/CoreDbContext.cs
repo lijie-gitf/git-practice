@@ -34,26 +34,22 @@ namespace CoreEntirty
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            var entityTypes = AssemblyHelper
-                                .GetTypesFromAssembly()
-                                .Where(type =>
-                                    !type.Namespace.IsNullOrWhiteSpace() &&
-                                    type.GetTypeInfo().IsClass &&
-                                    type.GetTypeInfo().BaseType != null &&
-                                    type != typeof(BaseEntity) &&
-                                    typeof(BaseEntity).IsAssignableFrom(type));
-
-            if (entityTypes?.Count() > 0)
+            var assembly = Assembly.GetExecutingAssembly();
+            foreach (Type type in assembly.ExportedTypes)
             {
-                foreach (var entityType in entityTypes)
+                if (type.IsClass && type != typeof(BaseEntity) && typeof(BaseEntity).IsAssignableFrom(type))
                 {
-                    if (modelBuilder.Model.FindEntityType(entityType) != null)
-                        continue;
-                    modelBuilder.Model.AddEntityType(entityType);
+                    var method = modelBuilder.GetType().GetMethods().Where(x => x.Name == "Entity").FirstOrDefault();
+
+                    if (method != null)
+                    {
+                        method = method.MakeGenericMethod(new Type[] { type });
+                        method.Invoke(modelBuilder, null);
+                    }
                 }
             }
+
+            base.OnModelCreating(modelBuilder);
         }
         //public DbSet<Tb_User> Tb_User { get; set; }
     }
